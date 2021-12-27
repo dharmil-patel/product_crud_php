@@ -1,7 +1,7 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=product_crud', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+/** @var pdo \PDO */
+require_once "../../database.php";
 
 // $id = $_GET['id'] ?? null;
 $id = $_POST['id'] ?? null;
