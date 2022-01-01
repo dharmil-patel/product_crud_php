@@ -19,6 +19,7 @@ $products = $statement->fetch(PDO::FETCH_ASSOC);
 $title = $products['title'];
 $description = $products['description'];
 $price = $products['price'];
+$imagePath = $products['image'];
 
 $errors = [];
 
@@ -27,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once "../../validate_product.php";
 
     if (empty($errors)) {
+        // print_r("update".$imagePath);
+        // exit;
 
         $statement =  $pdo->prepare("UPDATE products SET title = :title, image = :image, 
                     description = :description, price = :price WHERE id = :id");

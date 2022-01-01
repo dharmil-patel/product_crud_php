@@ -11,25 +11,32 @@ if (!$price) {
     $errors[] = "Product price is required!";
 }
 
-if (!is_dir(__DIR__.'public/images')) {
-    mkdir(__DIR__.'public/images');
+if (!is_dir(__DIR__ . '/public/images')) {
+    mkdir(__DIR__ . '/public/images');
 }
 
 if (empty($errors)) {
 
-    $imagePath = '';
+    $imagePath;
     $image = $_FILES['image'] ?? null;
     
+
     if ($image && $image['tmp_name']) {
 
+        $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
+        
+        //remove existing image if image recieve on POST request
         if ($products['image']) {
             unlink(__DIR__.'/public/'.$products['image']);
         }
 
-        $imagePath = 'images/' . randomString(8) . '/' . $image['name'];
-
-        mkdir(dirname(__DIR__.'/public/'.$imagePath));
+        //generate random image name with image extention
+        $randomImageName = date('Us', time()).$extension;
         
-        move_uploaded_file($image['tmp_name'], __DIR__.'/public/'.$imagePath);
-    } 
+        //public folder image directory path
+        $imagePath = "images/" . $randomImageName;
+
+        //move image from wamp temp location to project public image location
+        move_uploaded_file($image['tmp_name'], __DIR__ . '/public/' . $imagePath);
+    }
 }
