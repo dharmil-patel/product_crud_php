@@ -31,7 +31,7 @@ if (empty($errors)) {
         }
 
         //generate random image name with image extention
-        $randomImageName = date('Us', time()).$extension;
+        $randomImageName = date('Us', time()).".".$extension;
         
         //public folder image directory path
         $imagePath = "images/" . $randomImageName;
