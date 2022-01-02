@@ -1,0 +1,15 @@
+{
+    "name": "dharmil/14_product_crud",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "dharmil-patel",
+            "email": "dharmilpatel06@gmail.com"
+        }
+    ],
+    "require": {}
+}
